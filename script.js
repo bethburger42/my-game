@@ -19,6 +19,7 @@ var addCard= function(newName, newSuit) {
 	//Add a card to the fullDeck
 	card = new Card(newName, newSuit);
 	fullDeck[fullDeck.length] = card;
+	console.log(card);
 }
 
 var createDeck = function() {
@@ -27,15 +28,32 @@ var createDeck = function() {
 		for(var x=0; x<cardSuits.length; x++) {
 			console.log("cardSuits length: " + cardSuits.length);
 				addCard(cardNames[i],cardSuits[x]);
-				console.log(fullDeck);
 		}
 	}
 }
 
+var shuffleDeck = function(cardArray) {
+	for (var i=cardArray.length-1; i>0; i--) { 
+	    cardToSwap = Math.floor(Math.random() * i);
+	    temp = fullDeck[i];
+	    cardArray[i] = cardArray[cardToSwap];
+	    cardArray[cardToSwap] = temp;
+	}
+}
+
+
+// var hasContent = function(obj) {
+// 	if(obj.data.selftext !== "") {
+// 		return obj.data.selftext;
+// 	}
+// }
+// var postsWithText = children.filter(hasContent);
 
 $(document).ready(function() {
 	console.log("javascript works!");
 	createDeck();
+	shuffleDeck(fullDeck);
+	console.log(fullDeck);
 
 	});
 
