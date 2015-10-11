@@ -67,13 +67,17 @@ var dealToPlayers = function() {
 var playHand = function() {
 	if(player1ActiveCards[0].rating > player2ActiveCards[0].rating) {
 		console.log("player 1 card " + player1ActiveCards[0].rating + " wins over: " + player2ActiveCards[0].rating);
-		// player1PlayedCards.push(player1ActiveCards[0]);
-		// player1PlayedCards.push(player2ActiveCards[0]);
+		player1PlayedCards[0] = player1ActiveCards.shift();
+		player1PlayedCards[1] = player2ActiveCards.shift();
+		console.log("player 1 array length: " + player1PlayedCards.length);
+		console.log("player 2 array length: " + player2PlayedCards.length);
 		// testForWin();
 	} else if(player1ActiveCards[0].rating < player2ActiveCards[0].rating) {
 		console.log("player 2 card " + player2ActiveCards[0].rating + " wins over: " + player1ActiveCards[0].rating);
-		// player2PlayedCards.push(player1ActiveCards[0]);
-		// player2PlayedCards.push(player2ActiveCards[0]);
+		player2PlayedCards[0] = player1ActiveCards.shift();
+		player2PlayedCards[1] = player2ActiveCards.shift();
+		console.log("player 1 array length: " + player1PlayedCards.length);
+		console.log("player 2 array length: " + player2PlayedCards.length);	
 		// testForWin();
 	} else if(player1ActiveCards[0].rating === player2ActiveCards[0].rating) {
 			alert("It's a WAR!");
