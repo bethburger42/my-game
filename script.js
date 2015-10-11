@@ -2,13 +2,13 @@ var cardNames = ["2","3","4","5","6","7","8","9","10","J","K","Q","A"];
 var cardSuits = ["C","D","H","S"];
 var fullDeck = [];
 var card;
-// var card = {cardNum: "", cardSuit: ""};
+cardNum = 1;
 var player1ActiveCards = [];
 var player2ActiveCards = [];
 var gamePlayArray = [];
 var player1DealtCards = [];
 var player2DealtCards = [];
-var warCounter = 0;
+var cardCounter = 0;
 
 var Card = function(newName, newSuit) {
 	this.name = newName;
@@ -19,7 +19,6 @@ var addCard= function(newName, newSuit) {
 	//Add a card to the fullDeck
 	card = new Card(newName, newSuit);
 	fullDeck[fullDeck.length] = card;
-	console.log(card);
 }
 
 var createDeck = function() {
@@ -41,19 +40,39 @@ var shuffleDeck = function(cardArray) {
 	}
 }
 
+var dealToPlayers = function() {
+	for (var i=0; i<fullDeck.length; i++) {
+		if(cardNum % 2 === 0) {
+			player1ActiveCards[player1ActiveCards.length] = fullDeck[i];
+			cardNum++;
+		} else {
+			player2ActiveCards[player2ActiveCards.length] = fullDeck[i];
+			cardNum++;
+		}
+	}
+}
 
-// var hasContent = function(obj) {
-// 	if(obj.data.selftext !== "") {
-// 		return obj.data.selftext;
-// 	}
-// }
-// var postsWithText = children.filter(hasContent);
+var playHand = function() {
+	gamePlayArray[cardCounter] = player1ActiveCards.shift();
+	cardCounter++;
+	gamePlayArray[cardCounter] = player2ActiveCards.shift();
+	cardCounter++;
+}
 
 $(document).ready(function() {
 	console.log("javascript works!");
 	createDeck();
 	shuffleDeck(fullDeck);
-	console.log(fullDeck);
+	dealToPlayers();
+	playHand();
+	console.log(gamePlayArray);
 
-	});
+	// console.log("Player 1: ");
+	console.log("array 1 length: " + player1ActiveCards.length);
+	// console.log(player1ActiveCards);
+	// console.log("Player 2: ");
+	console.log("array 2 length: " + player2ActiveCards.length);
+	// console.log(player2ActiveCards);
+
+});
 
