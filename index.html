@@ -1,14 +1,15 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="">
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>The Game of WAR</title>
+		<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 		<link rel="stylesheet" type="text/css" href="styles.css">
-		<title>Title Page</title>
 
 		<!-- Bootstrap CSS -->
-		<link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+		<link href="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
 
 		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -19,20 +20,67 @@
 	</head>
 	<body>
 
+
+	<!-- USE HW/ WEEK 2 /mockups for grid examples  -->
+
 		<div class="container">
+		 	<div class="row">
+		 		<div class="col-md-12 page-header">
+		 			<h1 class="text-center">Let's Play a Game of WAR!</h1>
+		 		</div>
+		 	</div>
 
+		 	<div class="row">
+		 		<div class="col-md-12">
+					<button id="new-game">Play New Game</button>
+					<!-- //Hide when game starts. Add an "End Game" button that starts hidden, then shows when game starts. -->
 
-			<h1 class="text-center">Hello World</h1>
+					<button id="deal-cards">Deal</button>
 
-			<button class="newGame">Play New Game</button>
+					<button id="player-1-card">Player 1 Card</button>
+					<!-- disabled when Player 2's turn -->
 
+					<button id="player-2-card">Player 2 Card</button>
+					<!-- disabled when Player 1's turn -->
+				</div>
+			</div>		
+
+			<div class="row">
+				<div id="draggable" class=" col-md-3 ui-widget-content"> 
+					<p>Player 1 Active Cards to Play</p>
+				</div>
+				<div id="droppable" class="col-md-3 ui-widget-header" >
+				  	<p>Player 1 Card Here</p>
+				</div>
+	<!-- 			<div id="droppable" class="col-md-3 ui-widget-header" >
+				  	<p>Player 2 Card Here</p>
+				</div>
+				<div id="draggable" class=" col-md-3 ui-widget-content"> 
+					<p>Player 2 Active Cards to Play</p>
+				</div> -->
+			</div>
+			<div class="row">
+
+				<div id="played-1-stack" class="col-md-4 text-left ui-widget-header">
+				  	<p>Player 1 Played Cards</p>
+				</div>
+				<div class="col-md-4">
+				  	<p></p>
+				</div>
+				<div id="played-2-stack" class="col-md-4 text-left ui-widget-header">
+				  	<p>Player 2 Played Cards</p>
+				</div>
+			</div>
 
 
 		</div>
 		<!-- jQuery -->
 		<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-		<script type="text/javascript" src="script.js"></script>
+		<!-- jQuery UI -->
+		<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 		<!-- Bootstrap JavaScript -->
-		<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+		<script src="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+		<!-- // <script type="text/javascript" src="script.js"></script> -->
+		<script type="text/javascript" src="script_w_test_arrays.js"></script>
 	</body>
 </html>
