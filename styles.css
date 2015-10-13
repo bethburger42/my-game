@@ -1,0 +1,26 @@
+body {
+
+}
+
+h1 {
+
+}
+
+#draggable { 
+	width: 100px; 
+	height: 100px; 
+	padding: 0.5em; 
+	float: left; 
+	margin: 10px 10px 10px 0; 
+	border: 2px solid black;
+}
+  
+#droppable { 
+	width: 150px; 
+	height: 150px; 
+	padding: 0.5em; 
+	float: left; 
+	margin: 10px; 
+	border: 2px solid black;
+}
+  
