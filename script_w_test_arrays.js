@@ -11,7 +11,8 @@ var gamePlayArray = [];
 var player1PlayedCards = [];
 var player2PlayedCards = [];
 var cardCounter = 1;
-var player = "";
+var player = "Player 1";
+var isWar = false;
 
 var Card = function(newName, newSuit, newRating, newImage) {
 	this.name = newName;
@@ -70,9 +71,9 @@ var dealToPlayers = function() {
 	cardCounter = 0;
 }
 
-var testForWin = function(activeArray, playedArray, player) {
+var testForWin = function(activeArray, playedArray, gamePlayer) {
 	if(activeArray.length + playedArray.length === 52) {
-		alert(player + " has all the cards. " + player + " WINS!!!");
+		alert(gamePlayer + " has all the cards. " + gamePlayer + " WINS!!!");
 	} 
 }
 
@@ -86,6 +87,7 @@ var handNotEmpty = function(activeArray, playedArray, playA, playB) {
 		}
 }
 
+
 var testForCards = function (activeArray, playedArray, playerA, playerB) {
 	if(activeArray.length > 0) {
 		console.log(playerA + " has cards!");	
@@ -98,65 +100,61 @@ var testForCards = function (activeArray, playedArray, playerA, playerB) {
 	}
 }
 
-var playWar = function() {
-	//set divs in place so that next cards lay on top.
-
+//Remove card images from in-play stacks and display next player's turn
+var moveCards = function() {
+	$("#player-1-in-play img").attr("src", "");
+	$("#player-2-in-play img").attr("src", "");
+	$("#message-bar p").html("Player 1's Turn");
 }
 
-var removeCards = function() {
-		$("#player-1-in-play > img").remove();
-		$("#player-2-in-play > img").remove();
-		// $("#message-bar p").html("Player 1's Turn");
+//Set message box for type of win
+var setWinMessage = function(gamePlayer) {
+	if(isWar) {
+		$("#message-bar p").html(gamePlayer + " wins the WAR!");
+	} else {
+		$("#message-bar p").html(gamePlayer + " wins the hand!");
+	}
 }
 
 var playHand = function() {
 	var firstPlayer = "Player 1";
 	var secondPlayer = "Player 2";
 
-
 	if(gamePlayArray[cardCounter-2].rating > gamePlayArray[cardCounter-1].rating) {
-		$("#message-bar p").html("Player 1 wins the hand!");
+		setWinMessage(firstPlayer);
 		player1PlayedCards = player1PlayedCards.concat(gamePlayArray);
-		$("#player-1-played").append('<img class="card-image" src="' + player1PlayedCards[player1PlayedCards.length-1].image.src + '">');
+		setTimeout(moveCards, 1000);
+		setTimeout(function() {
+			$("#player-1-played img").attr("src", player1PlayedCards[player1PlayedCards.length-1].image.src);
+		}, 1000);
 
-		removeCards();
-		// setTimeout(removeCards, 3000);
-
-		setTimeout(function(){ $("#message-bar p").html("Player 1's Turn"); }, 3000);
-
-		console.log("player 1 active: "+ player1ActiveCards.length);
-		console.log(player1ActiveCards);
-		console.log("player 1 played: "+ player1PlayedCards.length);
-		console.log(player1PlayedCards);
+		// console.log("player 1 active: "+ player1ActiveCards.length);
+		// console.log(player1ActiveCards);
+		// console.log("player 1 played: "+ player1PlayedCards.length);
+		// console.log(player1PlayedCards);
 		gamePlayArray = [];
 		cardCounter = 0;
 		testForWin(player1ActiveCards, player1PlayedCards, firstPlayer);
-		clearInterval(myVar);
 	} 
 	else if(gamePlayArray[(cardCounter-2)].rating < gamePlayArray[cardCounter-1].rating) {
-
-		$("#message-bar p").html("Player 2 wins the hand!");
+		setWinMessage(secondPlayer);
 		player2PlayedCards = player2PlayedCards.concat(gamePlayArray);
-		$("#player-2-played").append('<img class="card-image" src="' + player2PlayedCards[player2PlayedCards.length-1].image.src + '">');
-		$("#player-1-in-play > img").remove();
-		$("#player-2-in-play > img").remove();
-
-		setTimeout(function(){ $("#message-bar p").html("Player 1's Turn"); }, 3000);
-		// $("#message-bar p").html("Player 1's Turn");
-
-		console.log("player 2 active: " + player2ActiveCards.length);
-		console.log(player2ActiveCards);
-		console.log("player 2 played: " + player2PlayedCards.length);
-		console.log(player2PlayedCards);
+		setTimeout(moveCards, 1000);
+		setTimeout(function() {
+			$("#player-2-played img").attr("src", player2PlayedCards[player2PlayedCards.length-1].image.src);
+		}, 1000);
+		// console.log("player 2 active: " + player2ActiveCards.length);
+		// console.log(player2ActiveCards);
+		// console.log("player 2 played: " + player2PlayedCards.length);
+		// console.log(player2PlayedCards);
 		gamePlayArray = [];
 		cardCounter = 0;
 		testForWin(player2ActiveCards, player2PlayedCards, secondPlayer);
-		clearInterval(myVar);
 	} else if(gamePlayArray[cardCounter-2].rating === gamePlayArray[cardCounter-1].rating) {
 			alert("It's a WAR!");
-			// See if either player's hand is empty
+			// Check if either player's hand is empty
 			if((testForCards(player1ActiveCards, player1PlayedCards, firstPlayer, secondPlayer)) && (testForCards(player2ActiveCards, player2PlayedCards, secondPlayer, firstPlayer))) {
-				playWar(); 
+				isWar = true; 
 			}
 	}
 }
@@ -165,12 +163,12 @@ var getCard = function(player) {
 	if(player === "Player 1") {
 		//Moves the first card from player 1's active cards and adds to game play array
 		gamePlayArray[cardCounter] = player1ActiveCards.shift();
-		$("#player-1-in-play").append('<img class="card-image" src="' + gamePlayArray[cardCounter].image.src + '">');
+		$("#player-1-in-play img").attr("src", gamePlayArray[cardCounter].image.src);
 
 	} else {
 		//Moves the first card from player 2's active cards and adds to game play array
 		gamePlayArray[cardCounter] = player2ActiveCards.shift();
-		$("#player-2-in-play").append('<img class="card-image" src="' + gamePlayArray[cardCounter].image.src + '">');
+		$("#player-2-in-play img").attr("src", gamePlayArray[cardCounter].image.src);
 
 	}
 	cardCounter++;
@@ -178,76 +176,88 @@ var getCard = function(player) {
 	//							 gamePlayArray[1] = player 2's card
 }
 
+
 $(document).ready(function() {
 	console.log("javascript works now!");
-$("#game-wrapper").hide();
+	$("#game-wrapper").hide();
 
-$("#new-game").on("click", function(e){
-	e.preventDefault();
-$("#splash-wrapper").remove();
-$("#game-wrapper").show();	
+	$("#new-game").on("click", function(e){
+		e.preventDefault();
+		$("#splash-wrapper").remove();
+		$("#game-wrapper").show();	
 
-    $( "#draggable" ).draggable();
-    $( "#droppable" ).droppable({
-      drop: function( event, ui ) {
-        $( this )
-          .addClass( "ui-state-highlight" )
-          .find( "p" )
-            .html( "Dropped!" );
-      }
-    });
+	    $( "#draggable" ).draggable();
+	    $( "#droppable" ).droppable({
+	      drop: function( event, ui ) {
+	        $( this )
+	          .addClass( "ui-state-highlight" )
+	          .find( "p" )
+	            .html( "Dropped!" );
+	      }
+	    });
+		createDeck();
+		shuffleDeck(fullDeck);
+	});
 
-	createDeck();
-	shuffleDeck(fullDeck);
-	
-});
+	$("#deal-cards").on("click", function(e){
+		e.preventDefault();
+		dealToPlayers();
+		//Change card stack backgrounds from transparent to oblique
+		$("div.transparent").addClass("oblique").removeClass("transparent");
 
-$("#deal-cards").on("click", function(e){
-	e.preventDefault();
-	dealToPlayers();
-	$("#player-1-active").append('<img class="card-image" src="images/back.png">');
-	$("#player-2-active").append('<img class="card-image" src="images/back.png">');
-	$("#message-bar p").html("Player 1's Turn");
+		//Set active cards to show card backs
+		$("#player-1-active img").attr("src", "images/back.png");
+		$("#player-2-active img ").attr("src", "images/back.png");
 
-	console.log("player 1:");
-	console.log(player1ActiveCards);
-	console.log("player 2:");
-	console.log(player2ActiveCards);
-});
+		$("#message-bar p").html("Player 1's Turn");
+		$("#player-2-active").addClass("disabled transparent").removeClass("enabled oblique");
+		$("#deal-cards").hide();
 
-$("#player-1-card").on("click", function(e){
-	player = "Player 1"
-	getCard(player);
+		console.log("player 1:");
+		console.log(player1ActiveCards);
+		console.log("player 2:");
+		console.log(player2ActiveCards);
+	});
 
-	$("#message-bar p").html("Player 2's Turn");
 
-	//Test case: for WAR (comment out getCard(player))
-	// player1ActiveCards = []; //Test case: Player 1 has no cards to play
-	// gamePlayArray[cardCounter] = new Card("10", "C", 9);
-	// cardCounter++;
-	//End test case
+//if player = Player 1: set $("#player-1-active").addClass("enabled"), 
+//set $("#player-2-active").addClass("disabled").removeClass("enabled");
 
-	console.log("player 1 card: "); 
-	console.log(gamePlayArray[0]);
 
-});
 
-$("#player-2-card").on("click", function(e){
-	player = "Player 2"
-	getCard(player);
+	$("#game-wrapper").on("click", ".enabled", function(e) {
+		$( "div.transparent").addClass("oblique").removeClass("transparent");
+		if(player==="Player 1") {
+			getCard(player);
+			player = "Player 2";
+			$("#message-bar p").html("Player 2's Turn");
+			$("#player-1-active").addClass("disabled transparent").removeClass("enabled oblique");
+			$("#player-2-active").addClass("enabled oblique").removeClass("disabled transparent");
+			return;
+		} if(player==="Player 2") {
+			getCard(player);
+			playHand(); 
+			player = "Player 1";
+			$("#player-1-active").addClass("enabled oblique").removeClass("disabled transparent");
+			$("#player-2-active").addClass("disabled transparent").removeClass("enabled oblique");
+			return;
+		}
+		
+		//Test case: for WAR (comment out getCard(player))
+		// player1ActiveCards = []; //Test case: Player 1 has no cards to play
+		// gamePlayArray[cardCounter] = new Card("10", "C", 9);
+		// cardCounter++;
+		//End test case
 
-	//Test case: for WAR (comment out getCard(player))
-	// gamePlayArray[cardCounter] = new Card("10", "S", 9);
-	// cardCounter++;
-	//End test case
+		//Test case: for WAR (comment out getCard(player))
+		// gamePlayArray[cardCounter] = new Card("10", "S", 9);
+		// cardCounter++;
+		//End test case
+	});
 
-	console.log("player 2 card: ");
-	console.log(gamePlayArray[1]);
-
-	playHand(); 
-});
-	
-
+	$("#instructions").on("click", function(e){
+		window.location.href = "how_to_play.html";
+	});
 
 });
 

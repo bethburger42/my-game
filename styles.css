@@ -66,20 +66,23 @@ button:active {
    background: #1b435e;
    }
 
-#wrapper: {
-	position: fixed;
-	width: 400px;
-	margin: 0 auto;
-}
 .splash-content {
-	width: 25%;
-	height: 400px;
+	width: 250px;
+	height: 350px;
 	background-color: ##AB9CCF;
 	text-align: center;
 	border-image-source: url("images/fleur_border.png");
 	border-image-slice: 100;
   	border-image-width: 10;
-  	margin: 0 auto;
+  	margin: 25px auto;
+}
+#splash-wrapper: {
+	text-align: center;
+	padding: 30px;
+}
+
+.button-bar {
+	margin: 0 auto;
 }
 
 .instructions-content {
@@ -91,22 +94,22 @@ button:active {
 	width: 90%; 
 	height: 90%; 
 	margin: 10px auto;
+	border: 1px solid black;
 }	
 
+.transparent {
+	opacity: 0.6;
+}
+
+.oblique {
+	opacity: 1.0;
+}
+
 #instructions {
-	margin: 100px 0px;
+	margin: 80px 0px;
 }
 
-#player-1-active {
-	width: 200px; 
-	height: 300px; 
-	padding: 0.5em; 
-	margin: 10px 10px 10px 0; 
-	border: 2px solid black;
-	background-color: #ffffff;
-    opacity: 0.6;
-}
-
+#player-1-active,
 #player-2-active {
 	width: 200px; 
 	height: 300px; 
@@ -114,7 +117,6 @@ button:active {
 	margin: 10px 10px 10px 0; 
 	border: 2px solid black;
 	background-color: #ffffff;
-    opacity: 0.6;
 }
 
 #player-1-played,
@@ -125,7 +127,6 @@ button:active {
 	margin: 10px 10px 10px 0; 
 	border: 2px solid black;
 	background-color: #ffffff;
-    opacity: 0.6;
 }
 
 #player-1-playspace,
@@ -155,17 +156,15 @@ button:active {
 	margin: 10px auto; 
 	border: 2px solid black;
 	background-color: #ffffff;
-    opacity: 0.6;
 }
 
 #message-bar {
 	width: 510px; 
 	height: 50px; 
-	padding: 0.5em; 
+	/*padding: 0.5em; */
 	margin: 10px auto; 
 	border: 2px solid black;	
 	background-color: #ffffff;
-    opacity: 0.6;
 }
 
 #message-bar p {
@@ -173,7 +172,7 @@ button:active {
 	font-size: 2em;	
 }
 
-#draggable { 
+/*#draggable { 
 	width: 100px; 
 	height: 100px; 
 	padding: 0.5em; 
@@ -188,6 +187,8 @@ button:active {
 	padding: 0.5em; 
 	float: left; 
 	margin: 10px; 
-	border: 2px solid black;
-}
+	border: 2px solid black;*/
+/*}*/
+
+
   
