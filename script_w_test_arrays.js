@@ -1,6 +1,8 @@
 var cardNames = ["2","3","4","5","6","7","8","9","10","J","K","Q","A"];
-var cardSuits = ["C","D","H","S"];
+var cardSuits = ["Clubs","Diamonds","Hearts","Spades"];
 var fullDeck = [];
+var imageURL = "";
+var imageTitle = "";
 var rating = 0;
 var card;
 var player1ActiveCards = [];
@@ -11,28 +13,39 @@ var player2PlayedCards = [];
 var cardCounter = 1;
 var player = "";
 
-var Card = function(newName, newSuit, newRating) {
+var Card = function(newName, newSuit, newRating, newImage) {
 	this.name = newName;
 	this.suit = newSuit;
 	this.rating = newRating;
+	this.image = newImage
 }
 
-var addCard= function(newName, newSuit, newRating) {
+var addCard= function(newName, newSuit, newRating, newImage) {
 	//Add a card to the fullDeck
-	card = new Card(newName, newSuit, newRating);
+	card = new Card(newName, newSuit, newRating, newImage);
 	fullDeck[fullDeck.length] = card;
 }
+
+var createImage = function(src, alt) {
+  var img   = new Image();
+  img.src   = src;
+  img.alt   = alt;
+  return img; 
+};
 
 var createDeck = function() {
 	fullDeck = [];
 	for(var x=0; x<cardSuits.length; x++) {	
 		console.log("cardSuits length: " + cardSuits.length);
-	for(var i=0; i<cardNames.length; i++) {
-		console.log("cardNames length: " + cardNames.length);
-		rating = i + 1;
-		addCard(cardNames[i],cardSuits[x],rating);
+		for(var i=0; i<cardNames.length; i++) {
+			console.log("cardNames length: " + cardNames.length);
+			rating = i + 1;
+			imageURL = "images/" + cardSuits[x] + "/" + cardNames[i] + ".png";
+			imageTitle = cardNames[i] + " " + cardSuits[x];
+			addCard(cardNames[i],cardSuits[x],rating, createImage(imageURL, imageTitle));
 		}
 	}
+	console.log(fullDeck);
 }
 
 var shuffleDeck = function(cardArray) {
@@ -95,7 +108,7 @@ var playHand = function() {
 	var secondPlayer = "Player 2";
 
 	if(gamePlayArray[cardCounter-2].rating > gamePlayArray[cardCounter-1].rating) {
-		console.log("player 1 card " + gamePlayArray[cardCounter-2].rating + " wins hand over p2: " + gamePlayArray[cardCounter-1].rating);
+		alert("player 1 card " + gamePlayArray[cardCounter-2].rating + " wins hand over p2: " + gamePlayArray[cardCounter-1].rating);
 		
 		player1PlayedCards = player1PlayedCards.concat(gamePlayArray);
 	
@@ -108,7 +121,7 @@ var playHand = function() {
 		testForWin(player1ActiveCards, player1PlayedCards, firstPlayer);
 	} 
 	else if(gamePlayArray[(cardCounter-2)].rating < gamePlayArray[cardCounter-1].rating) {
-		console.log("player 2 card " + gamePlayArray[cardCounter-2].rating + " wins hand over p1: " + gamePlayArray[cardCounter-1].rating);
+		alert("player 2 card " + gamePlayArray[cardCounter-2].rating + " wins hand over p1: " + gamePlayArray[cardCounter-1].rating);
 		player2PlayedCards = player2PlayedCards.concat(gamePlayArray);
 		console.log("player 2 active: " + player2ActiveCards.length);
 		console.log(player2ActiveCards);
@@ -124,7 +137,6 @@ var playHand = function() {
 				playWar(); 
 			}
 	}
-
 }
 
 var getCard = function(player) {
@@ -156,21 +168,18 @@ $("#new-game").on("click", function(e){
       }
     });
 
-
 	createDeck();
 	shuffleDeck(fullDeck);
+	
+});
+
+$("#deal-cards").on("click", function(e){
+	e.preventDefault();
 	dealToPlayers();
 	console.log("player 1:");
 	console.log(player1ActiveCards);
 	console.log("player 2:");
 	console.log(player2ActiveCards);
-
-	// console.log(gamePlayArray);
-
-	// console.log("Player 1: ");
-	console.log("array 1 length: " + player1ActiveCards.length);
-	// console.log("Player 2: ");
-	console.log("array 2 length: " + player2ActiveCards.length);
 });
 
 $("#player-1-card").on("click", function(e){

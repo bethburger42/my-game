@@ -1,9 +1,125 @@
 body {
-
+	background-image: url("images/battle_background.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	font-family: 'MedievalSharp', cursive;
+	/*font-family: 'Aclonica', sans-serif;*/
+	font-weight: 400;
 }
 
 h1 {
+	font-size: 4em;
+	color: #CF3628;
+	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}	
 
+img {
+	display: block;
+	width: 125px; 
+	height: 125px; 
+	margin: 10px auto;
+	border-radius: 25px;
+	border: 2px solid #5CCFC0;
+}	
+
+p {
+	color: #ffffff;
+	font-size: 1.75em;
+	text-align: center;
+	padding: 5px;
+	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+button {
+	font-size: 2em;
+	padding-top: 5px;
+}
+
+#player-1-active {
+	width: 200px; 
+	height: 300px; 
+	padding: 0.5em; 
+	margin: 10px 10px 10px 0; 
+	border: 2px solid black;
+	background-color: #ffffff;
+    opacity: 0.6;
+}
+
+#player-2-active {
+	width: 200px; 
+	height: 300px; 
+	padding: 0.5em; 
+	margin: 10px 10px 10px 0; 
+	border: 2px solid black;
+	background-color: #ffffff;
+    opacity: 0.6;
+}
+
+#player-1-played {
+	width: 200px; 
+	height: 300px; 
+	padding: 0.5em; 
+	margin: 10px 10px 10px 0; 
+	border: 2px solid black;
+	background-color: #ffffff;
+    opacity: 0.6;
+}
+
+#player-2-played {
+	width: 200px; 
+	height: 300px; 
+	padding: 0.5em; 
+	margin: 10px 10px 10px 0; 
+	border: 2px solid black;
+	background-color: #ffffff;
+    opacity: 0.6;
+}
+
+
+#player-1-playspace {
+	width: 250px; 
+	height: 500px; 
+	padding: 0.5em; 
+	margin: 10px 10px 10px 0; 
+/*	border: 2px solid black;*/
+}
+
+#player-2-playspace {
+	width: 250px; 
+	height: 500px; 
+	padding: 0.5em; 
+	margin: 10px 10px 10px 0; 
+	/*border: 2px solid black;*/
+}
+
+#player-1-in-play {
+	width: 200px; 
+	height: 300px; 
+	padding: 0.5em; 
+	margin: 10px auto; 
+	border: 2px solid black;
+	background-color: #ffffff;
+    opacity: 0.6;
+}
+
+#player-2-in-play {
+	width: 200px; 
+	height: 300px; 
+	padding: 0.5em; 
+	margin: 10px auto; 
+	border: 2px solid black;
+	background-color: #ffffff;
+    opacity: 0.6;
+}
+
+#volume-bar {
+	width: 510px; 
+	height: 75px; 
+	padding: 0.5em; 
+	margin: 10px auto; 
+	border: 2px solid black;	
+	background-color: #ffffff;
+    opacity: 0.6;
 }
 
 #draggable { 

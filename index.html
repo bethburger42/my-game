@@ -6,10 +6,14 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>The Game of WAR</title>
 		<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-		<link rel="stylesheet" type="text/css" href="styles.css">
+		
+		<!-- <link href='https://fonts.googleapis.com/css?family=Aclonica' rel='stylesheet' type='text/css'> -->
 
+		
 		<!-- Bootstrap CSS -->
 		<link href="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+		<link href='https://fonts.googleapis.com/css?family=MedievalSharp' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" type="text/css" href="styles.css">
 
 		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -25,12 +29,12 @@
 
 		<div class="container">
 		 	<div class="row">
-		 		<div class="col-md-12 page-header">
-		 			<h1 class="text-center">Let's Play a Game of WAR!</h1>
+		 		<div class="col-md-12">
+		 			<h1 class="text-center">Let's Play the Game of WAR!</h1>
 		 		</div>
 		 	</div>
 
-		 	<div class="row">
+		 	<div class="row">	
 		 		<div class="col-md-12">
 					<button id="new-game">Play New Game</button>
 					<!-- //Hide when game starts. Add an "End Game" button that starts hidden, then shows when game starts. -->
@@ -46,31 +50,68 @@
 			</div>		
 
 			<div class="row">
+				<div class="col-md-12">	
+
+				<div class="row">
+					<div class="col-md-3">
+						<div id="player-1-active"> 
+							Player 1 Active Cards
+						</div>
+						<div id="player-1-played"> 
+							Player 1 Played Cards
+						</div>
+
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+							<div id="player-1-playspace" class="col-md-6">
+								<div id="player-1-in-play">Player 1 Play Cards Here</div>
+								<img src="images/warrior_princess.jpg" alt="Player 1 Image">
+								<p>Player 1</p>
+							</div>
+							<div id="player-2-playspace" class="col-md-6">
+								<div id="player-2-in-play">Player 2 Play Cards Here</div>
+								<img src="images/knight.jpg" alt="Player 2 Image">
+								<p>Player 2</p>
+							</div>
+						</div>
+						<div class="row">
+							<div id="volume-bar" class="col-md-12">
+
+							</div>
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div id="player-2-active"> 
+							Player 2 Active Cards
+						</div>
+						<div id="player-2-played"> 
+							Player 2 Played Cards
+						</div>
+					</div>
+				</div>
+
+				</div>
+			</div>
+			
+<!-- 
 				<div id="draggable" class=" col-md-3 ui-widget-content"> 
 					<p>Player 1 Active Cards to Play</p>
 				</div>
+
+
+
 				<div id="droppable" class="col-md-3 ui-widget-header" >
 				  	<p>Player 1 Card Here</p>
-				</div>
+				</div> -->
 	<!-- 			<div id="droppable" class="col-md-3 ui-widget-header" >
 				  	<p>Player 2 Card Here</p>
 				</div>
 				<div id="draggable" class=" col-md-3 ui-widget-content"> 
 					<p>Player 2 Active Cards to Play</p>
 				</div> -->
-			</div>
-			<div class="row">
+			<!-- </div> -->
 
-				<div id="played-1-stack" class="col-md-4 text-left ui-widget-header">
-				  	<p>Player 1 Played Cards</p>
-				</div>
-				<div class="col-md-4">
-				  	<p></p>
-				</div>
-				<div id="played-2-stack" class="col-md-4 text-left ui-widget-header">
-				  	<p>Player 2 Played Cards</p>
-				</div>
-			</div>
 
 
 		</div>
