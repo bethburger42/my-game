@@ -14,13 +14,6 @@ h1 {
 	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }	
 
-.card-image {
-	display: block;
-	width: 90%; 
-	height: 90%; 
-	margin: 10px auto;
-}	
-
 p {
 	color: #ffffff;
 	font-size: 1.75em;
@@ -29,9 +22,79 @@ p {
 	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 
-button {
+a {
+	text-decoration: none;
+}
+
+/*button {
 	font-size: 2em;
 	padding-top: 5px;
+	margin: 10px auto;
+}*/
+
+
+button {
+   border-top: 1px solid #96d1f8;
+   background: #65a9d7;
+   background: -webkit-gradient(linear, left top, left bottom, from(#3e779d), to(#65a9d7));
+   background: -webkit-linear-gradient(top, #3e779d, #65a9d7);
+   background: -moz-linear-gradient(top, #3e779d, #65a9d7);
+   background: -ms-linear-gradient(top, #3e779d, #65a9d7);
+   background: -o-linear-gradient(top, #3e779d, #65a9d7);
+   padding: 8px 16px;
+   -webkit-border-radius: 9px;
+   -moz-border-radius: 9px;
+   border-radius: 9px;
+   -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   box-shadow: rgba(0,0,0,1) 0 1px 0;
+   text-shadow: rgba(0,0,0,.4) 0 1px 0;
+   color: white;
+   font-size: 17px;
+   font-family: 'MedievalSharp', cursive;
+   /*font-family: Helvetica, Arial, Sans-Serif;*/
+   text-decoration: none;
+   vertical-align: middle;
+   }
+button:hover {
+   border-top-color: #28597a;
+   background: #28597a;
+   color: #cccccc;
+   }
+button:active {
+   border-top-color: #1b435e;
+   background: #1b435e;
+   }
+
+#wrapper: {
+	position: fixed;
+	width: 400px;
+	margin: 0 auto;
+}
+.splash-content {
+	width: 25%;
+	height: 400px;
+	background-color: ##AB9CCF;
+	text-align: center;
+	border-image-source: url("images/fleur_border.png");
+	border-image-slice: 100;
+  	border-image-width: 10;
+  	margin: 0 auto;
+}
+
+.instructions-content {
+	font-size: 1.25em;
+}
+
+.card-image {
+	display: block;
+	width: 90%; 
+	height: 90%; 
+	margin: 10px auto;
+}	
+
+#instructions {
+	margin: 100px 0px;
 }
 
 #player-1-active {

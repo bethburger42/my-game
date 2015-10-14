@@ -103,20 +103,26 @@ var playWar = function() {
 
 }
 
+var removeCards = function() {
+		$("#player-1-in-play > img").remove();
+		$("#player-2-in-play > img").remove();
+		// $("#message-bar p").html("Player 1's Turn");
+}
+
 var playHand = function() {
 	var firstPlayer = "Player 1";
 	var secondPlayer = "Player 2";
 
+
 	if(gamePlayArray[cardCounter-2].rating > gamePlayArray[cardCounter-1].rating) {
-		
-		setTimeout(function(){ $("#message-bar p").html("Player 1 wins the hand!"); 
+		$("#message-bar p").html("Player 1 wins the hand!");
 		player1PlayedCards = player1PlayedCards.concat(gamePlayArray);
 		$("#player-1-played").append('<img class="card-image" src="' + player1PlayedCards[player1PlayedCards.length-1].image.src + '">');
-		$("#player-1-in-play > img").remove();
-		$("#player-2-in-play > img").remove();
-	}, 3000);
-	
-		setTimeout(function(){ $("#message-bar p").html("Player 1's Turn"); }, 4000);
+
+		removeCards();
+		// setTimeout(removeCards, 3000);
+
+		setTimeout(function(){ $("#message-bar p").html("Player 1's Turn"); }, 3000);
 
 		console.log("player 1 active: "+ player1ActiveCards.length);
 		console.log(player1ActiveCards);
@@ -125,16 +131,18 @@ var playHand = function() {
 		gamePlayArray = [];
 		cardCounter = 0;
 		testForWin(player1ActiveCards, player1PlayedCards, firstPlayer);
+		clearInterval(myVar);
 	} 
 	else if(gamePlayArray[(cardCounter-2)].rating < gamePlayArray[cardCounter-1].rating) {
-		setTimeout(function(){ $("#message-bar p").html("Player 2 wins the hand!");
+
+		$("#message-bar p").html("Player 2 wins the hand!");
 		player2PlayedCards = player2PlayedCards.concat(gamePlayArray);
-		$("#player-2-played").append('<img class="card-image" src="' + player1PlayedCards[player1PlayedCards.length-1].image.src + '">');
+		$("#player-2-played").append('<img class="card-image" src="' + player2PlayedCards[player2PlayedCards.length-1].image.src + '">');
 		$("#player-1-in-play > img").remove();
 		$("#player-2-in-play > img").remove();
-	}, 3000);
 
-		setTimeout(function(){ $("#message-bar p").html("Player 1's Turn"); }, 4000);
+		setTimeout(function(){ $("#message-bar p").html("Player 1's Turn"); }, 3000);
+		// $("#message-bar p").html("Player 1's Turn");
 
 		console.log("player 2 active: " + player2ActiveCards.length);
 		console.log(player2ActiveCards);
@@ -143,6 +151,7 @@ var playHand = function() {
 		gamePlayArray = [];
 		cardCounter = 0;
 		testForWin(player2ActiveCards, player2PlayedCards, secondPlayer);
+		clearInterval(myVar);
 	} else if(gamePlayArray[cardCounter-2].rating === gamePlayArray[cardCounter-1].rating) {
 			alert("It's a WAR!");
 			// See if either player's hand is empty
@@ -171,9 +180,12 @@ var getCard = function(player) {
 
 $(document).ready(function() {
 	console.log("javascript works now!");
+$("#game-wrapper").hide();
 
 $("#new-game").on("click", function(e){
 	e.preventDefault();
+$("#splash-wrapper").remove();
+$("#game-wrapper").show();	
 
     $( "#draggable" ).draggable();
     $( "#droppable" ).droppable({
@@ -232,7 +244,7 @@ $("#player-2-card").on("click", function(e){
 	console.log("player 2 card: ");
 	console.log(gamePlayArray[1]);
 
-	playHand();
+	playHand(); 
 });
 	
 
