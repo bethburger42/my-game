@@ -108,10 +108,16 @@ var playHand = function() {
 	var secondPlayer = "Player 2";
 
 	if(gamePlayArray[cardCounter-2].rating > gamePlayArray[cardCounter-1].rating) {
-		alert("player 1 card " + gamePlayArray[cardCounter-2].rating + " wins hand over p2: " + gamePlayArray[cardCounter-1].rating);
 		
+		setTimeout(function(){ $("#message-bar p").html("Player 1 wins the hand!"); 
 		player1PlayedCards = player1PlayedCards.concat(gamePlayArray);
+		$("#player-1-played").append('<img class="card-image" src="' + player1PlayedCards[player1PlayedCards.length-1].image.src + '">');
+		$("#player-1-in-play > img").remove();
+		$("#player-2-in-play > img").remove();
+	}, 3000);
 	
+		setTimeout(function(){ $("#message-bar p").html("Player 1's Turn"); }, 4000);
+
 		console.log("player 1 active: "+ player1ActiveCards.length);
 		console.log(player1ActiveCards);
 		console.log("player 1 played: "+ player1PlayedCards.length);
@@ -121,8 +127,15 @@ var playHand = function() {
 		testForWin(player1ActiveCards, player1PlayedCards, firstPlayer);
 	} 
 	else if(gamePlayArray[(cardCounter-2)].rating < gamePlayArray[cardCounter-1].rating) {
-		alert("player 2 card " + gamePlayArray[cardCounter-2].rating + " wins hand over p1: " + gamePlayArray[cardCounter-1].rating);
+		setTimeout(function(){ $("#message-bar p").html("Player 2 wins the hand!");
 		player2PlayedCards = player2PlayedCards.concat(gamePlayArray);
+		$("#player-2-played").append('<img class="card-image" src="' + player1PlayedCards[player1PlayedCards.length-1].image.src + '">');
+		$("#player-1-in-play > img").remove();
+		$("#player-2-in-play > img").remove();
+	}, 3000);
+
+		setTimeout(function(){ $("#message-bar p").html("Player 1's Turn"); }, 4000);
+
 		console.log("player 2 active: " + player2ActiveCards.length);
 		console.log(player2ActiveCards);
 		console.log("player 2 played: " + player2PlayedCards.length);
@@ -143,9 +156,13 @@ var getCard = function(player) {
 	if(player === "Player 1") {
 		//Moves the first card from player 1's active cards and adds to game play array
 		gamePlayArray[cardCounter] = player1ActiveCards.shift();
+		$("#player-1-in-play").append('<img class="card-image" src="' + gamePlayArray[cardCounter].image.src + '">');
+
 	} else {
 		//Moves the first card from player 2's active cards and adds to game play array
 		gamePlayArray[cardCounter] = player2ActiveCards.shift();
+		$("#player-2-in-play").append('<img class="card-image" src="' + gamePlayArray[cardCounter].image.src + '">');
+
 	}
 	cardCounter++;
 	//results after first hand:  gamePlayArray[0] = player 1's card
@@ -176,6 +193,10 @@ $("#new-game").on("click", function(e){
 $("#deal-cards").on("click", function(e){
 	e.preventDefault();
 	dealToPlayers();
+	$("#player-1-active").append('<img class="card-image" src="images/back.png">');
+	$("#player-2-active").append('<img class="card-image" src="images/back.png">');
+	$("#message-bar p").html("Player 1's Turn");
+
 	console.log("player 1:");
 	console.log(player1ActiveCards);
 	console.log("player 2:");
@@ -185,6 +206,8 @@ $("#deal-cards").on("click", function(e){
 $("#player-1-card").on("click", function(e){
 	player = "Player 1"
 	getCard(player);
+
+	$("#message-bar p").html("Player 2's Turn");
 
 	//Test case: for WAR (comment out getCard(player))
 	// player1ActiveCards = []; //Test case: Player 1 has no cards to play

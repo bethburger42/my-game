@@ -5,6 +5,7 @@ body {
 	font-family: 'MedievalSharp', cursive;
 	/*font-family: 'Aclonica', sans-serif;*/
 	font-weight: 400;
+	/*font-size: 1em;*/
 }
 
 h1 {
@@ -13,13 +14,11 @@ h1 {
 	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }	
 
-img {
+.card-image {
 	display: block;
-	width: 125px; 
-	height: 125px; 
+	width: 90%; 
+	height: 90%; 
 	margin: 10px auto;
-	border-radius: 25px;
-	border: 2px solid #5CCFC0;
 }	
 
 p {
@@ -55,16 +54,7 @@ button {
     opacity: 0.6;
 }
 
-#player-1-played {
-	width: 200px; 
-	height: 300px; 
-	padding: 0.5em; 
-	margin: 10px 10px 10px 0; 
-	border: 2px solid black;
-	background-color: #ffffff;
-    opacity: 0.6;
-}
-
+#player-1-played,
 #player-2-played {
 	width: 200px; 
 	height: 300px; 
@@ -75,8 +65,8 @@ button {
     opacity: 0.6;
 }
 
-
-#player-1-playspace {
+#player-1-playspace,
+#player-2-playspace  {
 	width: 250px; 
 	height: 500px; 
 	padding: 0.5em; 
@@ -84,24 +74,17 @@ button {
 /*	border: 2px solid black;*/
 }
 
-#player-2-playspace {
-	width: 250px; 
-	height: 500px; 
-	padding: 0.5em; 
-	margin: 10px 10px 10px 0; 
-	/*border: 2px solid black;*/
-}
+#knight,
+#princess {
+	display: block;
+	width: 125px; 
+	height: 125px; 
+	margin: 10px auto;
+	border-radius: 25px;
+	border: 2px solid #5CCFC0;
+}	
 
-#player-1-in-play {
-	width: 200px; 
-	height: 300px; 
-	padding: 0.5em; 
-	margin: 10px auto; 
-	border: 2px solid black;
-	background-color: #ffffff;
-    opacity: 0.6;
-}
-
+#player-1-in-play,
 #player-2-in-play {
 	width: 200px; 
 	height: 300px; 
@@ -112,14 +95,19 @@ button {
     opacity: 0.6;
 }
 
-#volume-bar {
+#message-bar {
 	width: 510px; 
-	height: 75px; 
+	height: 50px; 
 	padding: 0.5em; 
 	margin: 10px auto; 
 	border: 2px solid black;	
 	background-color: #ffffff;
     opacity: 0.6;
+}
+
+#message-bar p {
+	color: #120ECF;
+	font-size: 2em;	
 }
 
 #draggable { 
