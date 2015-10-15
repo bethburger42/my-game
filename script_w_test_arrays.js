@@ -151,7 +151,7 @@ var playHand = function() {
 		cardCounter = 0;
 		testForWin(player2ActiveCards, player2PlayedCards, secondPlayer);
 	} else if(gamePlayArray[cardCounter-2].rating === gamePlayArray[cardCounter-1].rating) {
-			alert("It's a WAR!");
+			swal({title: "It's a WAR!!!",   text: "This hand was a tie.",   imageUrl: "images/crossed_swords.png", imageSize: "200x200"});
 			// Check if either player's hand is empty
 			if((testForCards(player1ActiveCards, player1PlayedCards, firstPlayer, secondPlayer)) && (testForCards(player2ActiveCards, player2PlayedCards, secondPlayer, firstPlayer))) {
 				isWar = true; 
@@ -228,14 +228,27 @@ $(document).ready(function() {
 	$("#game-wrapper").on("click", ".enabled", function(e) {
 		$( "div.transparent").addClass("oblique").removeClass("transparent");
 		if(player==="Player 1") {
-			getCard(player);
+			// getCard(player);
+
+		//Test case: for WAR (comment out getCard(player))
+		player1ActiveCards = []; //Test case: Player 1 has no cards to play
+		gamePlayArray[cardCounter] = new Card("10", "C", 9);
+		cardCounter++;
+		//End test case
+
 			player = "Player 2";
 			$("#message-bar p").html("Player 2's Turn");
 			$("#player-1-active").addClass("disabled transparent").removeClass("enabled oblique");
 			$("#player-2-active").addClass("enabled oblique").removeClass("disabled transparent");
 			return;
 		} if(player==="Player 2") {
-			getCard(player);
+			// getCard(player);
+
+		//Test case: for WAR (comment out getCard(player))
+		gamePlayArray[cardCounter] = new Card("10", "S", 9);
+		cardCounter++;
+		//End test case
+
 			playHand(); 
 			player = "Player 1";
 			$("#player-1-active").addClass("enabled oblique").removeClass("disabled transparent");
@@ -243,16 +256,9 @@ $(document).ready(function() {
 			return;
 		}
 		
-		//Test case: for WAR (comment out getCard(player))
-		// player1ActiveCards = []; //Test case: Player 1 has no cards to play
-		// gamePlayArray[cardCounter] = new Card("10", "C", 9);
-		// cardCounter++;
-		//End test case
 
-		//Test case: for WAR (comment out getCard(player))
-		// gamePlayArray[cardCounter] = new Card("10", "S", 9);
-		// cardCounter++;
-		//End test case
+
+
 	});
 
 	$("#instructions").on("click", function(e){
