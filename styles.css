@@ -14,7 +14,8 @@ h1 {
 	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }	
 
-p {
+#player-1-playspace p,
+#player-2-playspace p {
 	color: #ffffff;
 	font-size: 1.75em;
 	text-align: center;
@@ -69,24 +70,30 @@ button:active {
 .splash-content {
 	width: 250px;
 	height: 350px;
-	background-color: ##AB9CCF;
+	/*background-color: ##AB9CCF;*/
 	text-align: center;
 	border-image-source: url("images/fleur_border.png");
 	border-image-slice: 100;
   	border-image-width: 10;
   	margin: 25px auto;
 }
+
 #splash-wrapper: {
 	text-align: center;
 	padding: 30px;
 }
 
-.button-bar {
-	margin: 0 auto;
-}
-
-.instructions-content {
-	font-size: 1.25em;
+#instructions-content {
+	width: 650px;
+	height: 100%px;
+	background-color: #A4C4CF;
+	text-align: center;
+	border-image-source: url("images/fleur_border_landscape.png");
+	border-image-slice: 100;
+  	border-image-width: 10;
+  	padding: 30px;
+  	margin: 10px auto;
+  	font-weight: bold;
 }
 
 .card-image {
@@ -110,29 +117,24 @@ button:active {
 }
 
 #player-1-active,
-#player-2-active {
-	width: 200px; 
-	height: 300px; 
-	padding: 0.5em; 
-	margin: 10px 10px 10px 0; 
-	border: 2px solid black;
-	background-color: #ffffff;
-}
-
+#player-2-active,
+#player-1-in-play,
+#player-2-in-play,
 #player-1-played,
 #player-2-played {
-	width: 200px; 
-	height: 300px; 
+	width: 190px; 
+	height: 270px; 
 	padding: 0.5em; 
-	margin: 10px 10px 10px 0; 
+	margin: 0 auto;
+	/*margin: 10px 10px 10px 0; */
 	border: 2px solid black;
 	background-color: #ffffff;
 }
 
 #player-1-playspace,
 #player-2-playspace  {
-	width: 250px; 
-	height: 500px; 
+	width: 225px; 
+	height: 450px; 
 	padding: 0.5em; 
 	margin: 10px 10px 10px 0; 
 /*	border: 2px solid black;*/
@@ -147,16 +149,6 @@ button:active {
 	border-radius: 25px;
 	border: 2px solid #5CCFC0;
 }	
-
-#player-1-in-play,
-#player-2-in-play {
-	width: 200px; 
-	height: 300px; 
-	padding: 0.5em; 
-	margin: 10px auto; 
-	border: 2px solid black;
-	background-color: #ffffff;
-}
 
 #message-bar {
 	width: 510px; 

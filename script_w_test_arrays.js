@@ -155,6 +155,7 @@ var playHand = function() {
 			// Check if either player's hand is empty
 			if((testForCards(player1ActiveCards, player1PlayedCards, firstPlayer, secondPlayer)) && (testForCards(player2ActiveCards, player2PlayedCards, secondPlayer, firstPlayer))) {
 				isWar = true; 
+				player = "Player 1";
 			}
 	}
 }
@@ -224,7 +225,6 @@ $(document).ready(function() {
 //set $("#player-2-active").addClass("disabled").removeClass("enabled");
 
 
-
 	$("#game-wrapper").on("click", ".enabled", function(e) {
 		$( "div.transparent").addClass("oblique").removeClass("transparent");
 		if(player==="Player 1") {
@@ -257,6 +257,14 @@ $(document).ready(function() {
 
 	$("#instructions").on("click", function(e){
 		window.location.href = "how_to_play.html";
+	});
+
+	$("#end-game").on("click", function(e){
+		document.location.reload() ;
+	});
+
+	$("#return-home").on("click", function(e){
+		document.location.reload() ;
 	});
 
 });
