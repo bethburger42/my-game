@@ -6,10 +6,20 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>The Game of WAR</title>
 		<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<<<<<<< HEAD
 		<link rel="stylesheet" type="text/css" href="styles.css">
 
 		<!-- Bootstrap CSS -->
 		<link href="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+=======
+		
+		<!-- Bootstrap CSS -->
+		<link href="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+		<link href='https://fonts.googleapis.com/css?family=MedievalSharp' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" type="text/css" href="dist/sweetalert.css">
+		<link rel="stylesheet" type="text/css" href="animate.css">
+		<link rel="stylesheet" type="text/css" href="styles.css">
+>>>>>>> master
 
 		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -17,6 +27,7 @@
 			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
 			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 		<![endif]-->
+<<<<<<< HEAD
 	</head>
 	<body>
 
@@ -73,6 +84,87 @@
 			</div>
 
 
+=======
+
+	</head>
+	<body>
+
+		<div class="container">
+		 	<h1 class="text-center">Let's Play the Game of WAR!</h1>
+			<div id="splash-wrapper">
+			 	<div class="row">	
+			 		<div class="splash-content">						
+						<button id="new-game">Play New Game</button>
+						<button id="instructions">How to Play</button>
+					</div>
+				</div>
+			</div>
+
+		 	<div id="game-wrapper">
+<!-- 		 		<div>
+					<button id="instructions"><a href="how_to_play.html">How to Play</a></button>
+				</div> -->
+
+
+				<div class="row">
+
+					<div class="col-md-3">
+						<div id="player-1-active" class="transparent enabled"> 
+							Player 1 Active Cards
+							<img class="card-image" src="" />
+						</div>
+						<div id="player-1-played" class="transparent"> 
+							Player 1 Played Cards
+							<img class="card-image" src="" />
+						</div>
+					</div>
+
+					<div class="col-md-6">
+
+						<div class="row">
+							<div id="message-bar" class="col-md-12">
+								<p>Press the "Deal" Button to Start</p>
+							</div>
+						</div>
+
+						<div class="row">
+							<div id="player-1-playspace" class="col-md-5 text-center">
+								<img id="princess" src="images/warrior_princess.jpg" alt="Player 1 Image">
+								<p>Player 1</p>
+								<p id="player-1-num-cards"></p>
+								<div id="player-1-in-play" class="transparent">Player 1 Play Cards Here
+								<img class="card-image" src="" /></div>
+							</div>
+							<div class="col-md-2 text-center">
+								<button id="deal-cards">Deal</button>
+								<button id="end-game">End Game</button>
+							</div>
+							<div id="player-2-playspace" class="col-md-5 text-center">
+								<img id="knight" src="images/knight.jpg" alt="Player 2 Image">
+								<p>Player 2</p>
+								<p id="player-2-num-cards"></p>
+								<div id="player-2-in-play" class="transparent">Player 2 Play Cards Here
+								<img class="card-image" src="" /></div>
+							</div>
+						</div>
+
+					</div>
+					<div class="col-md-3">
+						<div id="player-2-active" class="transparent disabled"> 
+							Player 2 Active Cards
+							<img class="card-image" src="" />
+						</div>
+						<div id="player-2-played" class="transparent"> 
+							Player 2 Played Cards
+							<img class="card-image" src="" />
+						</div>
+					</div>
+
+				</div>
+			
+			</div>
+
+>>>>>>> master
 		</div>
 		<!-- jQuery -->
 		<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
@@ -80,7 +172,14 @@
 		<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 		<!-- Bootstrap JavaScript -->
 		<script src="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<<<<<<< HEAD
 		<!-- // <script type="text/javascript" src="script.js"></script> -->
 		<script type="text/javascript" src="script_w_test_arrays.js"></script>
+=======
+		<!-- SweetAlert JavaScript -->
+		<script src="dist/sweetalert.min.js"></script>
+		<script type="text/javascript" src="script.js"></script>
+		<!-- // <script type="text/javascript" src="script_w_test_arrays.js"></script> -->
+>>>>>>> master
 	</body>
 </html>
