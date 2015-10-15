@@ -1,9 +1,3 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>README: Game of War</title>
-</head>
-<body>
 <h1>The Game of WAR</h1>
 <h2>Author: Beth Ernsberger</h2>
 
@@ -28,8 +22,3 @@ I began with creating the site functionality in JQuery, to ensure the card game 
 <h3>Unsolved Problems</h3>
 <p>Timeouts needed for alerts in the case where there is a war and a player runs out of cards. Issues with centering page elements. Animations not displayed due to conflicts with using Animate.css and Bootstrap. The site elements should be resizeable depending on the screen size. 
 </p>
-
-</body>
-</html>
-
-
